@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Gradle : com.boa : boa-jdk-demo-1.0-SNAPSHOT.war">
+    <output-path>$PROJECT_DIR$/boa-jdk-demo/build/libs</output-path>
+    <properties id="gradle-properties">
+      <options external-project-path="$PROJECT_DIR$/boa-jdk-demo" />
+    </properties>
+    <root id="archive" name="boa-jdk-demo-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Gradle : com.boa : boa-jdk-demo-1.0-SNAPSHOT.war (exploded)" />
+    </root>
+  </artifact>
+</component>

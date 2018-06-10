@@ -22,17 +22,13 @@ public abstract class DateUtils {
 
     private static final ConcurrentHashMap<String, SimpleDateFormat> formatFactory = new ConcurrentHashMap<>(16);
 
-    private static void add(String datePattern, SimpleDateFormat fmt) {
-        formatFactory.putIfAbsent(datePattern, fmt);
-    }
-
-    private static SimpleDateFormat getDateFormater(String pattern) {
+    private static SimpleDateFormat getDateFormat(String pattern) {
         Assert.hasText(pattern, "invalid param [pattern]");
 
         SimpleDateFormat simpleDateFormat = formatFactory.get(pattern);
         if (simpleDateFormat == null) {
             simpleDateFormat = new SimpleDateFormat(pattern);
-            add(pattern, simpleDateFormat);
+            formatFactory.putIfAbsent(pattern, simpleDateFormat);
             return simpleDateFormat;
         }
         return simpleDateFormat;
@@ -40,7 +36,7 @@ public abstract class DateUtils {
 
 
     public static Calendar String2Calendar(String dataStr, String pattern) {
-        SimpleDateFormat fmt = getDateFormater(pattern);
+        SimpleDateFormat fmt = getDateFormat(pattern);
         try {
             Date d = fmt.parse(dataStr);
             Calendar c = Calendar.getInstance();
